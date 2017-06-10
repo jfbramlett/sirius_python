@@ -3,6 +3,8 @@ import com.sirius.logging_config
 import logging
 import itertools
 
+from com.sirius.permutations.notfoundexception import NotFoundException
+
 logger = logging.getLogger(__name__)
 
 class Permutator(object) :
@@ -33,6 +35,9 @@ class Permutator(object) :
         :return: the list associated with the given id or none if the id is not registered
         """
         logger.info("Looking up set with id %s", id)
+        if id not in self.registered_collections :
+            raise NotFoundException(id)
+
         return self.registered_collections.get(id)
 
     def get_permutations(self, id):
@@ -43,8 +48,6 @@ class Permutator(object) :
         :return: A list of lists containing the permutations of the original list
         """
         number_set = self.get_set(id)
-        if number_set is None :
-            return [[]]
 
         logger.info("Generating permutations for set %s", str(number_set))
         return [list(x) for x in itertools.permutations(number_set)]

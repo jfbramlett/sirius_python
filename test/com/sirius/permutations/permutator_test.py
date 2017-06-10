@@ -1,6 +1,7 @@
 import unittest
 
 from com.sirius.permutations.permutator import Permutator
+from com.sirius.permutations.notfoundexception import NotFoundException
 
 class Permutatortest(unittest.TestCase) :
     """
@@ -33,7 +34,8 @@ class Permutatortest(unittest.TestCase) :
 
         permutator.register_set(id, collection)
 
-        self.assertIsNone(permutator.get_set(missing_id))
+        with self.assertRaises(NotFoundException) :
+            permutator.get_set(missing_id)
 
     def test_sum(self):
         """
@@ -59,7 +61,8 @@ class Permutatortest(unittest.TestCase) :
         missing_id = "2"
         permutator.register_set(id, collection)
 
-        self.assertEquals(0, permutator.get_sum(missing_id))
+        with self.assertRaises(NotFoundException) :
+            permutator.get_sum(missing_id)
 
     def test_permutations(self):
         """
@@ -101,9 +104,9 @@ class Permutatortest(unittest.TestCase) :
         """
         permutator = Permutator()
         id = "2"
-        expected = [[]]
 
-        self.assertEquals(expected, permutator.get_permutations(id))
+        with self.assertRaises(NotFoundException) :
+            permutator.get_permutations(id)
 
     def test_add_negative(self):
         """
@@ -156,9 +159,8 @@ class Permutatortest(unittest.TestCase) :
 
         id = "2"
 
-        expected = [[]]
-
-        self.assertEquals(expected, permutator.adjust_permutation(id, 1))
+        with self.assertRaises(NotFoundException) :
+            permutator.adjust_permutation(id, 1)
 
 
 
