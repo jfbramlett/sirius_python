@@ -33,17 +33,21 @@ class Permutator(object) :
         :return: the list associated with the given id or none if the id is not registered
         """
         logger.info("Looking up set with id %s", id)
-        return self.registered_collections[id]
+        return self.registered_collections.get(id)
 
-    def get_permutations(self, number_set):
+    def get_permutations(self, id):
         """
         Returns the set of permutations associated with the given id
 
-        :param number_set: The list we are getting the permutations for
+        :param id: The id for the registered set we are working with
         :return: A list of lists containing the permutations of the original list
         """
+        number_set = self.get_set(id)
+        if number_set is None :
+            return [[]]
+
         logger.info("Generating permutations for set %s", str(number_set))
-        return itertools.permutations(number_set)
+        return [list(x) for x in itertools.permutations(number_set)]
 
     def get_sum(self, id):
         """
@@ -52,13 +56,8 @@ class Permutator(object) :
         :param id: The id of the set we are working with
         :return: long The sum of all permutations
         """
-        total = 0
-        collection = self.get_set(id)
-        if collection != None :
-            permutations = self.get_permutations(collection)
-            total = sum([sum(x) for x in permutations])
-
-        return total
+        permutations = self.get_permutations(id)
+        return sum([sum(x) for x in permutations])
 
     def adjust_permutation(self, id, adjustment):
         """
@@ -69,11 +68,5 @@ class Permutator(object) :
         :param adjustment: An integer which is the adjustment amount
         :return: A list of list containing the adjusted permutations
         """
-        result = []
-        collection = self.get_set(id)
-        if collection != None :
-            permutations = self.get_permutations(collection)
-            result = [[x + adjustment for x in perm] for perm in permutations]
-
-        return result
-
+        permutations = self.get_permutations(id)
+        return [[x + adjustment for x in perm] for perm in permutations]
