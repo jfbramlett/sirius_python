@@ -53,6 +53,22 @@ Response:
 }
 
 ## To run the app
+Create a virtual environment (one-time operation):
 
+````
+virtualenv <dir for virtual env>
+````
+
+Set-up the app (one-time operation):
+````
+source <dir for virtual env>/bin/activate
+pip install -r requirements.txt
+````
+
+Run the app
+````
+source <dir for virtual env>/bin/activate
+./sirius.sh
+````
 
 ## To run the test
