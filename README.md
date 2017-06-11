@@ -3,7 +3,7 @@
 ## Problem
 Develop a JSON based REST API that implements that following 3 documented endpoints.
 
-_Receives an array of integers along with a unique ID and returns a set of arrays which contain all unique permutations of the order of the integers. It keeps a record of the output to handle the additional requests below._
+_**Receives an array of integers along with a unique ID and returns a set of arrays which contain all unique permutations of the order of the integers. It keeps a record of the output to handle the additional requests below.**_
 
 **Path:** /addEntity
 
@@ -28,7 +28,7 @@ _Receives an array of integers along with a unique ID and returns a set of array
 	]
 }
 
-_Receives a unique ID and returns the sum of all integers that belong to the entity that was added using end point 1._
+_**Receives a unique ID and returns the sum of all integers that belong to the entity that was added using end point 1.**_
 
 **Path:** /sumEntity/entityID
 
@@ -42,7 +42,7 @@ _Receives a unique ID and returns the sum of all integers that belong to the ent
 	“sum”:36
 }
 
-_Receives a unique ID along with an integer value that should be added to all integers that belong to the entity’s set of permutations that was introduced using end point 1, then it return the results._
+_**Receives a unique ID along with an integer value that should be added to all integers that belong to the entity’s set of permutations that was introduced using end point 1, then it return the results.**_
 
 **Path:** /updateEntity
 
