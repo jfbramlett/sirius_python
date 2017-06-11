@@ -71,5 +71,5 @@ class Permutator(object) :
         :param adjustment: An integer which is the adjustment amount
         :return: A list of list containing the adjusted permutations
         """
-        permutations = self.get_permutations(id)
-        return [[x + adjustment for x in perm] for perm in permutations]
+        self.register_set(id, [x + adjustment for x in self.get_set(id)])
+        return self.get_permutations(id)
