@@ -3,19 +3,20 @@
 ## Problem
 Develop a JSON based REST API that implements that following 3 documented endpoints.
 
-1. Receives an array of integers along with a unique ID and returns a set of arrays which contain all unique permutations of the order of the integers. It keeps a record of the output to handle the additional requests below.
+_Receives an array of integers along with a unique ID and returns a set of arrays which contain all unique permutations of the order of the integers. It keeps a record of the output to handle the additional requests below._
 
-Path: /addEntity
+**Path:** /addEntity
 
-Request: POST
+**Request:** POST
 
-Example:
+**Example:**
 {
 	"entityID ": 1,
 	"data": [1, 2, 3]
 }
 
-Response: 
+**Response:** 
+
 {
 	“permutations”: [
 		[1, 2, 3],
@@ -27,30 +28,35 @@ Response:
 	]
 }
 
-2. Receives a unique ID and returns the sum of all integers that belong to the entity that was added using end point 1.
-Path: /sumEntity/entityID
+_Receives a unique ID and returns the sum of all integers that belong to the entity that was added using end point 1._
 
-Request: GET
+**Path:** /sumEntity/entityID
 
-Example: /1
+**Request:** GET
 
-Response: 
+**Example:** /1
+
+**Response:** 
+
 {
 	“sum”:36
 }
 
-3. Receives a unique ID along with an integer value that should be added to all integers that belong to the entity’s set of permutations that was introduced using end point 1, then it return the results.
+_Receives a unique ID along with an integer value that should be added to all integers that belong to the entity’s set of permutations that was introduced using end point 1, then it return the results._
 
-Path: /updateEntity
+**Path:** /updateEntity
 
-Request: POST
+**Request:** POST
 
-Example:
+**Example:**
+
 {
 	"entityID ": 1,
 	"add": -1
 }
-Response: 
+
+**Response:**
+
 {
 	"results": [
 		[0, 1, 2],
