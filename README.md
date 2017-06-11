@@ -72,3 +72,9 @@ source <dir for virtual env>/bin/activate
 ````
 
 ## To run the test
+
+Run all test
+````
+source <dir for virtual env>/bin/activate
+./sirius_test.sh
+````
