@@ -4,13 +4,17 @@
 Develop a JSON based REST API that implements that following 3 documented endpoints.
 
 1. Receives an array of integers along with a unique ID and returns a set of arrays which contain all unique permutations of the order of the integers. It keeps a record of the output to handle the additional requests below.
+
 Path: /addEntity
+
 Request: POST
+
 Example:
 {
 	"entityID ": 1,
 	"data": [1, 2, 3]
 }
+
 Response: 
 {
 	“permutations”: [
@@ -25,16 +29,22 @@ Response:
 
 2. Receives a unique ID and returns the sum of all integers that belong to the entity that was added using end point 1.
 Path: /sumEntity/entityID
+
 Request: GET
+
 Example: /1
+
 Response: 
 {
 	“sum”:36
 }
 
 3. Receives a unique ID along with an integer value that should be added to all integers that belong to the entity’s set of permutations that was introduced using end point 1, then it return the results.
+
 Path: /updateEntity
+
 Request: POST
+
 Example:
 {
 	"entityID ": 1,
@@ -69,6 +79,16 @@ Run the app
 ````
 source <dir for virtual env>/bin/activate
 ./sirius.sh
+````
+
+Sample cURL commands
+````
+curl -H "Content-Type: application/json" -X POST -d '{"entityId":"1","data":[1,2,3]}' http://localhost:5000/addEntity
+
+curl -X GET http://localhost:5000/sumEntity/1
+
+curl -H "Content-Type: application/json" -X POST -d '{"entityId":"1","add":-1}' http://localhost:5000/updateEntity
+
 ````
 
 ## To run the test
